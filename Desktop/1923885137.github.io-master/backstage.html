@@ -34,7 +34,6 @@
            <div class="top_nav">
             <ul class="nav nav-pills">
                 <li role="presentation" class="active"><a href="#">鸿浩学苑</a></li>
-                <li role="presentation"><a href="load_register.html">登陆</a></li>
                 <li role="presentation"><a href="#">提问</a></li>
                 <li role="presentation"><a href="#">树洞</a></li>
               </ul>
@@ -49,7 +48,11 @@
     
         
             <ul class="nav nav-pills">
-                <li role="presentation" ><a href="#">个人中心</a></li>
+                <li role="presentation"><a href="load_register.html">登陆/注册</a></li>
+                <li role="presentation " style="display: none;" >
+                  <a href="#">个人中心</a>
+                </li>
+                <!-- 个人中心 这个部分先隐藏 -->
                 <li role="presentation"><a href="#">收藏</a></li>
                 <li role="presentation"><a href="#">动态</a></li>
                 <li role="presentation"><a href="#">消息</a></li>
@@ -313,24 +316,7 @@
       
     </main>
     <script>
-      $(function(){
-        $(".to-edit-first>a").on("click",function(){
-          $(".indication-first").css("display","none");
-          $(".indication-first-settings").css("display","block");
-        });
-        $(".to-edit-second>a").on("click",function(){
-          $(".indication-second").css("display","none");
-          $(".indication-second-settings").css("display","block");
-        });
-        $(".edit-button-content-first>button").on("click",function(){
-          $(".indication-first").css("display","block");
-          $(".indication-first-settings").css("display","none");
-        })
-        $(".edit-button-content-second>button").on("click",function(){
-          $(".indication-second").css("display","block");
-          $(".indication-second-settings").css("display","none");
-        })
-      })
+     
     </script>
 </body>
 </html>
