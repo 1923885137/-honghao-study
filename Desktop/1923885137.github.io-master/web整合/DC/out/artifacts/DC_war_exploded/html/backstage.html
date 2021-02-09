@@ -160,7 +160,7 @@
                        <label for="nickname" class="edit-form-label">用户昵称</label>
                        <div class="edit-form-item-content">
                         <div class="form-input">
-                          <input  type="text" autocomplete="off" placeholder="请输入昵称" class="form-input-inner">
+                          <input  type="text" autocomplete="off" placeholder="请输入昵称" class="form-input-inner" id="id">
                         </div>
                        </div>
                      </div>
@@ -168,7 +168,7 @@
                       <label for="realname" class="edit-form-label">真实姓名</label>
                       <div class="edit-form-item-content">
                         <div class="form-input">
-                          <input  type="text" autocomplete="off" placeholder="请输入真实姓名" class="form-input-inner">
+                          <input  type="text" autocomplete="off" placeholder="请输入真实姓名" class="form-input-inner" id="name">
                         </div>
                       </div>
                      </div>
@@ -177,10 +177,10 @@
                       <div class="edit-form-item-content">
                         <div class="form-input">
                           <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 男
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="男" checked="checked"> 男
                           </label>
                           <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 女
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="女"> 女
                           </label>
                         </div>
                       </div>
@@ -206,7 +206,7 @@
                       <label for="individual-resume" class="edit-form-label">个人简介</label>
                       <div class="edit-form-item-content">
                         <div class="form-textarea">
-                          <textarea autocomplete="off" maxlength="300" placeholder="你很懒，还没有添加简介" class="el-textarea__inner" style="resize: none; min-height: 33px;"></textarea>
+                          <textarea autocomplete="off" maxlength="300" placeholder="你很懒，还没有添加简介" class="el-textarea__inner" style="resize: none; min-height: 33px;" id="introduction"></textarea>
                         </div>
                       </div>
                      </div>
@@ -214,7 +214,7 @@
                       <label  class="edit-form-label"></label>
                       <div class="edit-button-content-first">
                         <button type="button" class="btn btn-default">取消</button>
-                        <button type="button" class="btn btn-danger">确定</button>
+                        <button type="button" class="btn btn-danger" id="basic_submit">确定</button>
                       </div>
                      </div>
                     </form>
@@ -270,7 +270,7 @@
                         <label for="shoolname" class="edit-form-label">学校名称</label>
                         <div class="edit-form-item-content">
                           <div class="form-input">
-                            <input  type="text" autocomplete="off" placeholder="请输入学校名称" class="form-input-inner">
+                            <input  type="text" autocomplete="off" placeholder="请输入学校名称" id="school" class="form-input-inner">
                           </div>
                         </div>
                        </div>
@@ -278,7 +278,7 @@
                         <label for="specialty" class="edit-form-label">专业</label>
                         <div class="edit-form-item-content">
                           <div class="form-input">
-                            <input  type="text" autocomplete="off" placeholder="请输入专业名称" class="form-input-inner">
+                            <input  type="text" autocomplete="off" placeholder="请输入专业名称" id="major" class="form-input-inner">
                           </div>
                         </div>
                        </div>
@@ -286,7 +286,7 @@
                         <label for="in-shool-time" class="edit-form-label">入学时间</label>
                         <div class="edit-form-item-content">
                           <div class="form-input">
-                            <input  type="text" autocomplete="off" placeholder="请输入入学时间" class="form-input-inner" id="year-select">
+                            <input  type="text" autocomplete="off" placeholder="请输入入学时间"  class="form-input-inner" id="year-select">
                           </div>
                         </div>
                        </div>
@@ -294,7 +294,7 @@
                         <label for="education-background" class="edit-form-label">学历</label>
                         <div class="edit-form-item-content">
                           <div class="form-input">
-                            <input  type="text" autocomplete="off" placeholder="请输入学历名称" class="form-input-inner">
+                            <input  type="text" autocomplete="off" placeholder="请输入学历名称" id="background" class="form-input-inner">
                           </div>
                         </div>
                        </div>
@@ -302,7 +302,7 @@
                         <label  class="edit-form-label"></label>
                         <div class="edit-button-content-second">
                           <button type="button" class="btn btn-default">取消</button>
-                          <button type="button" class="btn btn-danger">确定</button>
+                          <button type="button" class="btn btn-danger" id="edu_submit">确定</button>
                         </div>
                        </div>
                     </form>
@@ -330,6 +330,32 @@
           $(".indication-second").css("display","block");
           $(".indication-second-settings").css("display","none");
         })
+      })
+      //getBasicInfo
+      $("#basic_submit").click(function () {
+          let user_id=$("#id").val();
+          let user_name=$("#name").val();
+          let user_date=$("#inputdate").val();
+          let user_city=$("#city").val();
+          let user_introduction=$("#introduction").val();
+          let sex_male=$("#inlineRadio1");
+          let sex_female=$("#inlineRadio2");
+          let user_sex=sex_male.prop("checked")===true?sex_male.val():sex_female.val();
+          $.post("/Info/Basic.do",{user_id:user_id,user_name:user_name,user_sex:user_sex,
+          user_introduction:user_introduction,user_city:user_city,user_date:user_date},function (res) {
+              alert(res);
+          },"text")
+      })
+
+      $("#edu_submit").click(function () {
+          let school=$("#school").val();
+          let time=$("#year-select").val();
+          let major=$("#major").val();
+          let background=$("#background").val();
+          $.post("/Info/Edu.do",{school:school,time:time,major:major,background:background},function (res) {
+              alert(res);
+          },"text")
+
       })
     </script>
 </body>

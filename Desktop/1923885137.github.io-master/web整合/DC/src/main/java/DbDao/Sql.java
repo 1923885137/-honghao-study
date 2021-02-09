@@ -4,20 +4,18 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Sql {
-    public static List<String[]> Select(Connection connect, String[]field, String table,String addition){
+    public static List<Object[]> Select(Connection connect, String[]field, String table,String addition){
         if(addition==null){
             addition="";
         }
-        List<String[]>result=new ArrayList<>();
+        List<Object[]>result=new ArrayList<>();
         int len=field==null?0:field.length;
         StringBuilder sql=new StringBuilder();
         if(len==0){
@@ -32,15 +30,14 @@ public class Sql {
                     append(" ").append(addition).append(" ").append(";");
         }
         String Sql=sql.toString();
-        PreparedStatement statement=null;
+        PreparedStatement statement;
         try {
-            System.out.println(sql);
            statement=connect.prepareStatement(Sql);
            ResultSet res= statement.executeQuery();
            while(res.next()){
-               String[]str=new String[len];
+               Object[]str= new Object[len];
                for(int i=0;i<len;i++){
-                   str[i]=res.getString(i+1);
+                   str[i]=res.getObject(i+1);
                }
                result.add(str);
            }
@@ -49,24 +46,32 @@ public class Sql {
         }
        return result;
     }
-    public static boolean Insert(Connection connect,String[]field,String[]values,String table){
+    public static boolean Insert(Connection connect,String[]field,Object[]values,String table){
           StringBuilder sql=new StringBuilder();
           sql.append("insert into ").append(table).append("( ");
           for (String s : field) {
             sql.append(s).append(",");
           }
           sql.delete(sql.length()-1,sql.length()).append(")values(");
-          for(String s:values){
+          PreparedStatement statement;
+         try {
+            for(Object s:values){
               if(s!=null) {
-                  sql.append('\'').append(s).append("',");
+                  sql.append("?").append(",");
               }else{
                   sql.append("null").append(",");
               }
           }
+            sql.delete(sql.length()-1,sql.length()).append(')');
+            statement = connect.prepareStatement(sql.toString());
+            int index=1;
+             for(Object s:values){
+                 if(s!=null) {
+                    statement.setObject(index++,s);
+                 }
+             }
           sql.delete(sql.length()-1,sql.length()).append(")");
-        try {
-            System.out.println(sql);
-            PreparedStatement statement=connect.prepareStatement(sql.toString());
+
             statement.executeUpdate();
             return true;
         } catch (SQLException throwables) {
@@ -75,12 +80,16 @@ public class Sql {
         return false;
     }
 
+    public static boolean Update(Connection connect,String[]field,Object[]values,String table){
+        return false;
+    }
+
     public static void main(String[] args) {
         ApplicationContext context=new ClassPathXmlApplicationContext("test.xml");
         SqlConnect connect=context.getBean("sqlConnect",SqlConnect.class);
-        String[]field={"id","user_email","password"};
-        String[]values={null,"ian","123"};
-        List<String[]>test=Sql.Select(connect.getConnect(),field,"email","");
-        System.out.println(Arrays.toString(test.get(0)));
+//        String[] field = {"id","user_email","password"};
+//        Object[] values={null,"213","123"};
+//        Sql.Insert(connect.getConnect(),field,values,"email");
+        System.out.println(Sql.Select(connect.getConnect(),new String[]{"id"},"email","where user_email= 'Aa15340521294@163.com' " ).get(0)[0]);
     }
 }

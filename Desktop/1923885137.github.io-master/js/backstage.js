@@ -22,25 +22,6 @@ laydate.render({
     ,type: 'year'
     ,range: true
   });
-
-  $(function(){
-    $(".to-edit-first>a").on("click",function(){
-      $(".indication-first").css("display","none");
-      $(".indication-first-settings").css("display","block");
-    });
-    $(".to-edit-second>a").on("click",function(){
-      $(".indication-second").css("display","none");
-      $(".indication-second-settings").css("display","block");
-    });
-    $(".edit-button-content-first>button").on("click",function(){
-      $(".indication-first").css("display","block");
-      $(".indication-first-settings").css("display","none");
-    })
-    $(".edit-button-content-second>button").on("click",function(){
-      $(".indication-second").css("display","block");
-      $(".indication-second-settings").css("display","none");
-    })
-  })
   
 }
 

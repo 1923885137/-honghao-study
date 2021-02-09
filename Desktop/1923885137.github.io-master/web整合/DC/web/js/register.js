@@ -150,11 +150,13 @@ var Auth = {
 //
 // })
 
+
 $("#login").click(function () {
 	let ID=$("#ID").val();
 	let PassWord=$("#PassWord").val();
 	$.post("/Login/Login1.do",{ID:ID,PassWord:PassWord},function (data) {
 		alert(data);
+		location.assign("../index.html");
 	},"text")
 })
 $("#register").click(function () {
