@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鸿鹄学苑</title>
+   <meta name="description" content=""/>
+   <!--等待组员讨论-->
+   <meta name="keywords" content=""/> 
+   <link rel="icon" href="xueyuan.ico" type="image/x-icon">   
+   <link rel="stylesheet" href="css/backstage.css">
+   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"><
+   <script src="js/jQuery-min.js"></script>
+   <script src="bootstrap/js/bootstrap.min.js"></script>
+   <script src="js/jquery-3.5.1.js"></script>
+   <script type="text/javascript" src="js/backstage.js"></script>
+   <style>
+      
+   </style>
+   </head>
+   <body>
+    <header>          
+        <div class="top_nav">
+         <ul class="nav nav-pills">
+             <li role="presentation" class="active"><a href="#">鸿浩学苑</a></li>
+             <li role="presentation"><a href="#">提问</a></li>
+             <li role="presentation"><a href="#">树洞</a></li>
+           </ul>
+   
+
+         <form class="navbar-form navbar-left" role="search">
+             <div class="form-group">
+               <input type="text" class="form-control" placeholder="Search">
+             </div>
+             <button type="submit" class="btn btn-default">搜索</button>
+           </form>
+ 
+     
+         <ul class="nav nav-pills">
+            <li role="presentation" id="login"><a href="./html/load_register.html">登陆/注册</a></li>
+            <li role="presentation " style="display: none;" id="user">
+               <a href="html/backstage.html">个人中心</a>
+              </li>
+             <li role="presentation"><a href="#">收藏</a></li>
+             <li role="presentation"><a href="#">动态</a></li>
+             <li role="presentation"><a href="#">消息</a></li>
+           </ul>
+        </div>
+ </header>  
+   
+   </body>
+   <script>
+
+       window.onload=function () {
+           $.get("/Login/getSession.do",{},function (user) {
+               if(user===""){
+                   alert("您还未登录，请尽快登录");
+               }else{
+                   alert(user);
+                   $("#login").css("visibility","hidden");
+                   $("#user").css("display","block");
+               }
+           })
+       }
+
+   </script>
+   
+   </html>
