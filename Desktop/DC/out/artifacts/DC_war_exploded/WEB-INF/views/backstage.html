@@ -9,18 +9,18 @@
    <meta name="description" content=""/>
    <!--等待组员讨论-->
    <meta name="keywords" content=""/> 
-   <link rel="icon" href="../xueyuan.ico" type="image/x-icon">
-   <link rel="stylesheet" href="../css/backstage.css">
-   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-   <link rel="stylesheet" href="../css/date.css">
-   <link rel="stylesheet" href="../css/laydate.css">
-   <script src="../js/jQuery-min.js"></script>
-   <script src="../js/date.js"></script>
-   <script src="../js/Popt.js"></script>
-   <script src="../js/cityJson.js"></script>
-   <script src="../js/citySet.js"></script>
-   <script src="../js/laydate.js"></script>
-   <script src="../js/backstage.js"></script>
+   <link rel="icon" href="../../xueyuan.ico" type="image/x-icon">
+   <link rel="stylesheet" href="../../css/backstage.css">
+   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" href="../../css/date.css">
+   <link rel="stylesheet" href="../../css/laydate.css">
+   <script src="../../js/jQuery-min.js"></script>
+   <script src="../../js/date.js"></script>
+   <script src="../../js/Popt.js"></script>
+   <script src="../../js/cityJson.js"></script>
+   <script src="../../js/citySet.js"></script>
+   <script src="../../js/laydate.js"></script>
+   <script src="../../js/backstage.js"></script>
    <script>
       
    </script>
@@ -76,14 +76,14 @@
                       <li class="item">
                         <a href="javascript:void(0);" class="btn_nav"><i class="iconfont "></i>资源管理</a>
                         <div class="smenu">
-                          <a href="javascript:void(0);">上传资源</a>
+                          <a href="/view/backstage_resource">上传资源</a>
                           <a href="javascript:void(0);">资源仓库</a>
                         </div>
                       </li>
                       <li class="item">
                         <a href="javascript:void(0);" class="btn_nav"><i class="iconfont "></i>设置</a>
                         <div class="smenu" >
-                          <a href="javascript:void(0);">账号密码</a>
+                          <a href="/view/backstage_password">账号密码</a>
                           <a href="javascript:void(0);">其它</a>
                         </div>
                       </li>
@@ -341,7 +341,7 @@
           let sex_male=$("#inlineRadio1");
           let sex_female=$("#inlineRadio2");
           let user_sex=sex_male.prop("checked")===true?sex_male.val():sex_female.val();
-          $.post("/Info/Basic.do",{user_id:user_id,user_name:user_name,user_sex:user_sex,
+          $.post("/Info/Basic",{user_id:user_id,user_name:user_name,user_sex:user_sex,
           user_introduction:user_introduction,user_city:user_city,user_date:user_date},function (res) {
               alert(res);
           },"text")
@@ -352,7 +352,7 @@
           let time=$("#year-select").val();
           let major=$("#major").val();
           let background=$("#background").val();
-          $.post("/Info/Edu.do",{school:school,time:time,major:major,background:background},function (res) {
+          $.post("/Info/Edu",{school:school,time:time,major:major,background:background},function (res) {
               alert(res);
           },"text")
 

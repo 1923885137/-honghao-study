@@ -160,6 +160,7 @@
    justify-content: space-between;
  }
  .content-edit-form>.edit-form-item {
+   position: relative;
   width: 419px;
   margin-right: 0;
   margin-bottom: 24px;
@@ -278,4 +279,20 @@
 .indication-first-settings, 
 .indication-second-settings{
   display: none;
+}
+.edit-form-item-content > .form-input.form-input-disabled>input{
+    background-color: #f5f7fa!important;
+    border-color: #e4e7ed!important;
+    color: #c0c4cc!important;
+    cursor: not-allowed!important;
+}
+.ID-warning{
+ position:absolute;
+ right: 240px;
+ top: 34px;
+ color: #d9534f;
+ font-size: medium;
+ font-style: italic;
+ font-weight: 550;
+ cursor: pointer;
 }

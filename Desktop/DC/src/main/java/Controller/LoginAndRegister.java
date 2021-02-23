@@ -33,7 +33,7 @@ public class LoginAndRegister {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/Login1.do",method =RequestMethod.POST)
+    @RequestMapping(path = "/login",method =RequestMethod.POST)
     public String LoginCheck(UserInfo userInfo,HttpServletRequest request) {
         this.userInfo = userInfo;
         String[]field={"password"};
@@ -52,7 +52,7 @@ public class LoginAndRegister {
         }
     }
     @ResponseBody
-    @RequestMapping(path = "/Login2.do",method =RequestMethod.POST)
+    @RequestMapping(path = "/register",method =RequestMethod.POST)
     public String register(UserInfo userInfo) {
         this.userInfo = userInfo;
         String[]field={"id","user_email","password"};
@@ -65,7 +65,7 @@ public class LoginAndRegister {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/getSession.do",method = RequestMethod.GET)
+    @RequestMapping(path = "/getSession",method = RequestMethod.GET)
     public String getSession(HttpServletResponse response,HttpServletRequest request){
         return (String)request.getSession().getAttribute("email");
     }

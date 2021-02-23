@@ -38,9 +38,9 @@
  
      
          <ul class="nav nav-pills">
-            <li role="presentation" id="login"><a href="./html/load_register.html">登陆/注册</a></li>
+            <li role="presentation" id="login"><a href="/view/register">登陆/注册</a></li>
             <li role="presentation " style="display: none;" id="user">
-               <a href="html/backstage.html">个人中心</a>
+               <a href="/view/backstage">个人中心</a>
               </li>
              <li role="presentation"><a href="#">收藏</a></li>
              <li role="presentation"><a href="#">动态</a></li>
@@ -53,7 +53,7 @@
    <script>
 
        window.onload=function () {
-           $.get("/Login/getSession.do",{},function (user) {
+           $.get("/Login/getSession",{},function (user) {
                if(user===""){
                    alert("您还未登录，请尽快登录");
                }else{

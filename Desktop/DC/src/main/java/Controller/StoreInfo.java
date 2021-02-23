@@ -52,7 +52,7 @@ public class StoreInfo {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/Basic.do", method = RequestMethod.POST)
+    @RequestMapping(path = "/Basic", method = RequestMethod.POST)
     public String storeBasic(UserBasic userBasic) {
         String[] field = {"id", "user_id", "user_name",
                 "user_sex", "user_introduction", "user_date", "user_city"};
@@ -70,7 +70,7 @@ public class StoreInfo {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/Edu.do",method = RequestMethod.POST)
+    @RequestMapping(path = "/Edu",method = RequestMethod.POST)
     public String storeEdu(UserEdu userEdu){
         String[]field={"id","school","major","time","background"};
         int id=getUser_id();

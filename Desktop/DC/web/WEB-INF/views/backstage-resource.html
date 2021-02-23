@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>鸿鹄学苑  用户中心</title>
+   <meta name="description" content=""/>
+   <!--等待组员讨论-->
+   <meta name="keywords" content=""/> 
+   <link rel="icon" href="../../xueyuan.ico" type="image/x-icon">
+   <link rel="stylesheet" href="../../css/backstage.css">
+   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+   <link href="../../css/styles.imageuploader.css" rel="stylesheet" type="text/css">
+   <script src="../../js/jQuery-min.js"></script>
+   <script src="../../js/backstage.js"></script>
+ </head>
+ <style>
+   /* .resource_sort{
+       z-index: 999;
+       position: absolute;
+       width: 500px;
+       height: 300px;
+       background-color: blueviolet;
+       top: 10%;
+       left: 35%;
+   } */
+   .main_box_resource {
+    position: relative;
+    width: 1200px;
+    height: 750px;
+    margin: 0 auto;
+    background-color: rgb(246, 246, 246);
+    overflow: hidden;}
+ </style>
+ <body>
+    <header>
+            
+        <div class="top_nav">
+         <ul class="nav nav-pills">
+             <li role="presentation" class="active"><a href="#">鸿浩学苑</a></li>
+             <li role="presentation"><a href="load_register.html">登陆</a></li>
+             <li role="presentation"><a href="#">提问</a></li>
+             <li role="presentation"><a href="#">树洞</a></li>
+           </ul>
+   
+
+         <form class="navbar-form navbar-left" role="search">
+             <div class="form-group">
+               <input type="text" class="form-control" placeholder="Search">
+             </div>
+             <button type="submit" class="btn btn-default">搜索</button>
+           </form>
+ 
+     
+         <ul class="nav nav-pills">
+             <li role="presentation" ><a href="#">个人中心</a></li>
+             <li role="presentation"><a href="#">收藏</a></li>
+             <li role="presentation"><a href="#">动态</a></li>
+             <li role="presentation"><a href="#">消息</a></li>
+           </ul>
+        </div>
+    
+ </header>
+ <main>
+       
+    <div class="main_box_resource">
+        <div class="left_nav">
+            <ul class="menu">
+              <li class="item">
+                <a href="javascript:void(0);" class="btn_nav"><i class="iconfont"></i>首页</a>
+              </li>
+              <li class="item" >
+                <a href="javascript:void(0);" class="btn_nav"><i class="iconfont "></i>提问与创作</a>
+                <div class="smenu">
+                  <a href="javascript:void(0);">提问题</a>
+                  <a href="javascript:void(0);">答问题</a>
+                  <a href="javascript:void(0);">写文章</a>
+                </div>
+              </li>
+              <li class="item">
+                <a href="javascript:void(0);" class="btn_nav"><i class="iconfont "></i>资源管理</a>
+                <div class="smenu">
+                  <a href="javascript:void(0);">上传资源</a>
+                  <a href="javascript:void(0);">资源仓库</a>
+                </div>
+              </li>
+              <li class="item">
+                <a href="javascript:void(0);" class="btn_nav"><i class="iconfont "></i>设置</a>
+                <div class="smenu" >
+                  <a href="javascript:void(0);">账号密码</a>
+                  <a href="javascript:void(0);">其它</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        <div class="right_main">
+      
+          <div class="uploader__box js-uploader__box l-center-box">
+            <form action="#" method="POST">
+                <div class="uploader__contents">
+                    <label class="button button--secondary" for="fileinput">请选择文件</label>
+                    <input id="fileinput" class="uploader__file-input" type="file" multiple value="Select Files">
+                </div>
+                <input class="button button--big-bottom" type="submit" value="Upload Selected Files">
+            </form>
+        </div>
+         </div>
+      
+    </div>
+
+</main>
+<!-- <div class="resource_sort"></div> -->
+<script src="js/jquery.imageuploader.js"></script>
+<script type="text/javascript">
+  (function(){
+            var options = {};
+            $('.js-uploader__box').uploader({
+              'selectButtonCopy':'请选择或拖拽文件',
+              'instructionsCopy':'你可以选择或拖拽多个文件',
+              'submitButtonCopy':'上传选择的文件',
+              'furtherInstructionsCopy':'你可以选择或拖拽更多的文件',
+              'secondarySelectButtonCopy':'选择更多的文件'
+            });
+        }());
+        // $(function(){
+        //   $(".js-uploader__submit-button").on("click",function(){
+            
+        //   })
+        // })
+</script>
+ </body>
+</html>

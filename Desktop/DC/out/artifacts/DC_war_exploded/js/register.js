@@ -154,9 +154,9 @@ var Auth = {
 $("#login").click(function () {
 	let ID=$("#ID").val();
 	let PassWord=$("#PassWord").val();
-	$.post("/Login/Login1.do",{ID:ID,PassWord:PassWord},function (data) {
+	$.post("/Login/login",{ID:ID,PassWord:PassWord},function (data) {
 		alert(data);
-		location.assign("../index.html");
+		location.assign("/")
 	},"text")
 })
 $("#register").click(function () {
@@ -167,7 +167,7 @@ $("#register").click(function () {
 	// },"text")
 	$.ajax({
 		type:"post",
-		url:"/Login/Login2.do",
+		url:"/Login/register",
 		data:{ID:ID,PassWord:PassWord},
 		async:false,
 		success:function (data){

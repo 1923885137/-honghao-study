@@ -12,6 +12,8 @@
           <element id="file-copy" path="$PROJECT_DIR$/../mysql-connector-java-5.1.49/mysql-connector-java-5.1.49.jar" />
           <element id="library" level="project" name="Spring-5.2.3.RELEASE" />
           <element id="library" level="project" name="Spring MVC-5.2.3.RELEASE" />
+          <element id="file-copy" path="D:/druid-1.2.4.jar" />
+          <element id="file-copy" path="D:/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49.jar" />
         </element>
       </element>
     </root>
